@@ -1,8 +1,23 @@
 import React from 'react'
 
+import Die from './components/Die'
+
 const App = () => {
   return (
-    <div>App</div>
+    <main>
+      <div className='dice-container'>
+        <Die value='1'/>
+        <Die value='1'/>
+        <Die value='1'/>
+        <Die value='1'/>
+        <Die value='1'/>
+        <Die value='1'/>
+        <Die value='1'/>
+        <Die value='1'/>
+        <Die value='1'/>
+        <Die value='1'/>
+      </div>
+    </main>
   )
 }
 
