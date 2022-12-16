@@ -2,7 +2,9 @@ import React from 'react'
 
 const Die = ({value}) => {
   return (
-    <div className='dice-face'><h2>{value}</h2></div>
+    <div className='die-face'>
+      <h2 className='die-num'>{value}</h2>
+    </div>
   )
 }
 
