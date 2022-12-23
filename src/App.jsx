@@ -8,6 +8,11 @@ import Die from './components/Die'
 const App = () => {
 
   const [diceValue, setDiceValue] = React.useState(allNewDice());
+  const [tenzies, setTenzies] = React.useState(false)
+
+  React.useEffect(() => {
+    console.log("Dice state changed")
+  }, [diceValue])
 
   function generateNewDie(){
       return {value: Math.ceil(Math.random() * 6), 
@@ -32,6 +37,8 @@ const App = () => {
 
   return (
     <main>
+      <h1 className="title">Tenzies</h1>
+      <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className='dice-container'>
        {diceElements}
       </div>
