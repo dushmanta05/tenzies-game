@@ -13,7 +13,7 @@ body {
 
 main {
   background-color: #F5F5F5;
-  height: 400px;
+  max-height: 800px;
   max-width: 800px;
   display: flex;
   justify-content: center;
@@ -29,6 +29,9 @@ main {
   grid-template: auto auto / repeat(5, 1fr);
   gap: 20px;
   margin-bottom: 30px;
+}
+.win {
+  margin-bottom: 20px;
 }
 .die-face{
     height: 50px;
@@ -60,4 +63,12 @@ main {
 }
 .roll-dice:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.footer-div {
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bolds;
+  font-size: 1.2rem;
 }
