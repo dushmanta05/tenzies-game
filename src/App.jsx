@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import Confetti from 'react-confetti';
 
+import Footer from './components/Footer';
 
 import Die from './components/Die'
 
@@ -10,6 +11,8 @@ const App = () => {
 
   const [diceValue, setDiceValue] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false)
+  const [attempt, setAttempt] = React.useState(0)
+
 
   React.useEffect(() => {
     const allHeld = diceValue.every(dice => dice.isHeld);
@@ -34,8 +37,10 @@ const App = () => {
   }
   function rollDice(){
     if(!tenzies){
+      setAttempt(prev => prev + 1)
       setDiceValue(oldDiceValue => oldDiceValue.map(obj => obj.isHeld ? obj : generateNewDie()))
     } else {
+      setAttempt(0)
       setTenzies(false);
       setDiceValue(allNewDice());
     }
@@ -47,15 +52,18 @@ const App = () => {
   const diceElements = diceValue.map(obj => <Die isHeld={obj.isHeld} key={obj.id} value={obj.value} holdDice={() => holdDice(obj.id)} />)
 
   return (
-    <main>
+    <><main>
       {tenzies && <Confetti />}
-      <h1 className="title">Tenzies</h1>
+      <h1 className="title">Tenzies 🎲</h1>
       <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className='dice-container'>
        {diceElements}
       </div>
+      {tenzies && <div className='win'>Congratulations! You won, and you have taken {attempt} attempt to solve it.🥳</div>}
       <button className='roll-dice' onClick={rollDice}>{tenzies ? 'New Game' : 'Roll'}</button>
     </main>
+    <Footer />
+    </>
   )
 }
 
